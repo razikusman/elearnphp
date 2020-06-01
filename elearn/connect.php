@@ -1,4 +1,12 @@
 <?php 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers:*');
+header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS');
+
+Header ('Access-Control-Max-Age “1000”');
+Header ('Access-Control-Allow-Headers "X-Requested-With, Content-Type, Origin, Authorization,Access-Control-Allow-Origin “*”');
+Header ('Access-Control-Allow-Headers “Origin, X-Requested-With, Content-Type, Access-Control-Allow-Origin”');
+Header ('Access-Control-Allow-Methods “PUT, GET, POST, DELETE, OPTIONS”');
 
 	//db connection
 	define('db_host','localhost');

@@ -1,5 +1,5 @@
 <?php 
-	require 'connect.php'; //conection to database
+	require 'connect.php';//conection to database
 	$postdata = file_get_contents("php://input"); //get the jason type data
 	
 	if(isset($postdata) && !empty($postdata))
@@ -8,11 +8,11 @@
 		
 		//asign data to variables
 		$name = mysqli_real_escape_string($con, trim($request -> name));
-		$pContact = mysqli_real_escape_string($con, (int)($request -> pContact));
+		$tContact = mysqli_real_escape_string($con, (int)($request -> contact));
 		$user = mysqli_real_escape_string($con, trim($request -> user));
-		$NIC = mysqli_real_escape_string($con, trim($request -> NIC));
+		$NIC = mysqli_real_escape_string($con, trim($request -> userid));
 		$password = mysqli_real_escape_string($con, trim($request -> password));
-		
+
 		//add to user table
 		$sql1 = "INSERT INTO user( uType,uID,uPassword ) VALUES( '{$user}','{$NIC}','{$password}' )";
 		
@@ -21,8 +21,8 @@
 			http_response_code(201);
 		}
 		
-		//add to parent table
-		$sql2 = "INSERT INTO parent( NIC,pName,pContact ) VALUES( '{$NIC}','{$name}','{$pContact}' )";
+		//add to teacher table
+		$sql2 = "INSERT INTO teacher( NIC,tName,tContact ) VALUES( '{$NIC}','{$name}','{$tContact}' )";
 		
 		if(mysqli_query($con,$sql2))
 		{
