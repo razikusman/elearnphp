@@ -1,9 +1,8 @@
 <?php
 require 'connect.php';
-$students = [];
-$userid = $_GET['userid'];
+$subid = $_GET['subid'];
 
-$sql = "DELETE FROM user WHERE uID = {$userid}";
+$sql = "DELETE FROM subjects WHERE subId = {$subid}";
 
 if(mysqli_query($con,$sql))
 {
