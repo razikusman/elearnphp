@@ -5,14 +5,13 @@
 	
 	//////////////////
 	
-	$sql1 = "SELECT * FROM `subjects_teaching`";
+	$sql1 = "SELECT * FROM `subjects`";
 	if($result = mysqli_query($con,$sql1))
 	{
 		$cr = 0;
 		while($row = mysqli_fetch_assoc($result)){
-			$subjects[$cr]['Sub_ID'] = $row['subID'];
-			$subjects[$cr]['tID'] = $row['tNIC'];
-			$subjects[$cr]['Grade'] = $row['Grade'];
+			$subjects[$cr]['Sub_ID'] = $row['subId'];
+			$subjects[$cr]['Name'] = $row['subName'];
 			$cr++;
 		}echo json_encode($subjects);
 			

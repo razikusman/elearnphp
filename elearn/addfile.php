@@ -8,15 +8,14 @@
 		$request=json_decode($postdata);//breake json data in to string array
 		
 		//asign data to variables
-		$name = mysqli_real_escape_string($con, trim($request -> name));
-		$tContact = mysqli_real_escape_string($con, (int)($request -> contact));
+		$name = mysqli_real_escape_string($con, trim($request -> file));
+		/*$tContact = mysqli_real_escape_string($con, (int)($request -> contact));
 		$gender = mysqli_real_escape_string($con, trim($request -> gender));
 		$qualification = mysqli_real_escape_string($con, trim($request -> qualification));
 		$user = mysqli_real_escape_string($con, trim($request -> user));
 		$NIC = mysqli_real_escape_string($con, trim($request -> userid));
 		$password = mysqli_real_escape_string($con, trim($request -> password));
 		$subject = mysqli_real_escape_string($con, trim($request -> sub));
-		$grade = mysqli_real_escape_string($con, trim($request -> grade));
 		
 		
 		//add to user table
@@ -36,17 +35,23 @@
 		}
 		
 		//get the subid from subject table
-		$sql1 = "SELECT `subId` FROM `subjects` where `subName` = '$subject'";
-		$result = mysqli_query($con,$sql1);
-		$row = mysqli_fetch_assoc($result);
-		$subID= $row['subId'];
+		$sql4 = "SELECT subId FROM `subjects` where subName = '$subject'";
+		$result = mysqli_query($con, $sql4);
+		$subID = mysqli_fetch_row($result);
+		echo $subID[0];
 
 		//add to subject teaching table
-		$sql3 = "INSERT INTO subjects_teaching( subID,tNIC,Grade ) VALUES( '{$subID}','{$NIC}','{$grade}' )";
+		$sql3 = "INSERT INTO subjects_teaching( subID,tNIC ) VALUES( '{$subID[0]}','{$NIC}' )";
+		*/
+		
+		$sql3 = "INSERT INTO zz( name ) VALUES( '{$name}')";
 		
 		if(mysqli_query($con,$sql3))
 		{
 			http_response_code(201);
+		}
+		else{
+			http_response_code(404);
 		}
 	}
 	

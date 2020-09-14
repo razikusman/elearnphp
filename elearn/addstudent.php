@@ -8,7 +8,8 @@
 		
 		
 		//asign data to variables
-		$name = mysqli_real_escape_string($con, trim($request -> name));
+		$sirname = mysqli_real_escape_string($con, trim($request -> sirname));
+		$givenname = mysqli_real_escape_string($con, trim($request -> givenname));
 		$grade = mysqli_real_escape_string($con, trim($request -> grad));
 		$DOB = mysqli_real_escape_string($con, trim($request -> DOB));
 		$pContact = mysqli_real_escape_string($con, (int)($request -> pContact));
@@ -36,7 +37,7 @@
 				http_response_code(201);
 			}
 		
-			$sql3 = "INSERT INTO student( sID,sName,sGrade,sDOB,sContact,sParentNIC) VALUES( '{$userid}','{$name}','{$grade}','{$DOB}','{$pContact}','{$pNIC}')";
+			$sql3 = "INSERT INTO student( sID,sirName,givenName,sGrade,sDOB,sContact,sParentNIC) VALUES( '{$userid}','{$sirname}','{$givenname}','{$grade}','{$DOB}','{$pContact}','{$pNIC}')";
 		
 			if(mysqli_query($con,$sql3))
 			{
@@ -57,7 +58,7 @@
 
 					
 		//add to student table from student form
-		$sql5 = "INSERT INTO student( sID,sName,sGrade,sDOB,sContact,sParentNIC) VALUES( '{$userid}','{$name}','{$grade}','{$DOB}','{$pContact}','{$pNIC}')";
+		$sql5 = "INSERT INTO student( sID,sirName,givenName,sGrade,sDOB,sContact,sParentNIC) VALUES( '{$userid}','{$sirname}','{$givenname}','{$grade}','{$DOB}','{$pContact}','{$pNIC}')";
 		
 		if(mysqli_query($con,$sql5))
 		{

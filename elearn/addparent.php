@@ -14,7 +14,7 @@
 		$password = mysqli_real_escape_string($con, trim($request -> password));
 		
 		//add to user table
-		$sql1 = "INSERT INTO user( uType,uID,uPassword ) VALUES( '{$user}','{$NIC}','{$password}' )";
+		$sql1 = "Update `user` SET `uPassword` = '$password' Where `uID` = '$NIC' AND `uType` = '$user' ";
 		
 		if(mysqli_query($con,$sql1))
 		{
@@ -22,12 +22,12 @@
 		}
 		
 		//add to parent table
-		$sql2 = "INSERT INTO parent( NIC,pName,pContact ) VALUES( '{$NIC}','{$name}','{$pContact}' )";
+		//$sql2 = "INSERT INTO parent( NIC,pName,pContact ) VALUES( '{$NIC}','{$name}','{$pContact}' )";
 		
-		if(mysqli_query($con,$sql2))
-		{
-			http_response_code(201);
-		}
+		//if(mysqli_query($con,$sql2))
+		//{
+			//http_response_code(201);
+		//}
 	}
 	
 ?>

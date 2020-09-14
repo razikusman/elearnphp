@@ -17,6 +17,9 @@ INNER JOIN `subjects_following` ON(
     )
 INNER JOIN `subjects` ON(
         subjects_following.subID = subjects.subId
+	)
+INNER JOIN `subjects_teaching` ON(
+        subjects_following.subID = subjects_teaching.subID
 	)";
 	
 	
@@ -27,12 +30,14 @@ INNER JOIN `subjects` ON(
 			$student[$cr]['Student_ID'] = $row['sID'];
 			$student[$cr]['Name'] = $row['sName'];
 			$student[$cr]['Gender'] = $row['Gender'];
-			$student[$cr]['Grade'] = $row['sGrade'];
+			$student[$cr]['sGrade'] = $row['sGrade'];
+			$student[$cr]['Grade'] = $row['Grade'];
 			$student[$cr]['Contact'] = $row['sContact'];
 			$student[$cr]['Parent_NIC'] = $row['sParentNIC'];
 			$student[$cr]['Parent_contact'] = $row['pContact'];
 			$student[$cr]['Parent_Name'] = $row['pName'];
 			$student[$cr]['Subject_Name'] = $row['subName'];
+			$student[$cr]['teacher_ID'] = $row['tNIC'];
 			
 			
 			$cr++;
